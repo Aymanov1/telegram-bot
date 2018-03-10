@@ -33,6 +33,14 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private MessageTable messageToRetreive;
 	TelegramBotsApi botsApi = new TelegramBotsApi();
+	public static final String WELCOMEMESSAGE = "Hello!!!. Please accept the invite by doing the following NOW:\n"
+			+ "\n"
+			+ "1. https://t.me/BSC_Blockchain_Store to open our Telegram channel and click JOIN GROUP on the next screen\n"
+			+ "2. Click here to register for a free account on the following form:\n https://docs.google.com/forms/d/e/1FAIpQLSd3staanV3WP_SNVEkOY8nRM62PXsLoa0g7xhmgEjHu77Du_Q/viewform"
+			+ "\n" + " Or our website: https://bcschain.io" + "\n" + "BSC community\n" + "check our group\n"
+			+ "https://t.me/gogogrp";
+
+	public static final String THANKSMESSAGE = "ありがとうございました。";
 
 	@Autowired
 	MessageTableService messageTableService;
@@ -62,7 +70,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	@Override
 	public void onUpdateReceived(Update update) {
 		// We check if the update has a message and the message has text
-		String answer;
+		SendMessage messageToGroup = new SendMessage();
 		if (update.hasMessage() && update.getMessage().hasText()) {
 
 			messageToRetreive = new MessageTable();
@@ -73,66 +81,34 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 			messageToRetreive.setMessageText(update.getMessage().getText());
 			messageTableService.saveMessageTable(messageToRetreive);
 
+			// test if the message inside gogo group
 			if (update.getMessage().getChatId().toString().equals("-1001194238685")) {
-				answer = "ありがとうございました。";
-				SendMessage messageToGroup = new SendMessage();
-				messageToGroup.setChatId(update.getMessage().getChatId()).setText(answer);
+				messageToGroup = new SendMessage();
+				messageToGroup.setChatId(update.getMessage().getChatId()).setText(THANKSMESSAGE);
 				try {
 					sendMessage(messageToGroup);
 				} catch (TelegramApiException e) {
-					e.printStackTrace();
+					logger.error("problem on send message", e);
 				} finally {
 					SendMessage privateMessage = new SendMessage();
 
-					answer = "Hello!!!. Please accept the invite by doing the following NOW:\n" + "\n"
-							+ "1. https://t.me/BSC_Blockchain_Store to open our Telegram channel and click JOIN GROUP on the next screen\n"
-							+ "2. Click here to register for a free account on the following form:\n https://docs.google.com/forms/d/e/1FAIpQLSd3staanV3WP_SNVEkOY8nRM62PXsLoa0g7xhmgEjHu77Du_Q/viewform"
-							+ "\n" + " Or our website: https://bcschain.io" + "\n" + "BSC community\n"
-							+ "check our group\n" + "https://t.me/gogogrp";
-					privateMessage.setChatId((long) 460915355).setText(answer);
+					privateMessage.setChatId((long) 460915355).setText(WELCOMEMESSAGE);
 					try {
 						sendMessage(privateMessage);
 					} catch (TelegramApiException e) {
-						e.printStackTrace();
+						logger.error("problem", e);
 					}
 				}
 			} else {
-				answer = "You’re almost ready to claim your 5 CAPP Tokens and enter  Channel. Please accept the invite by doing the following NOW:\n"
-						+ "\n"
-						+ "1. https://t.me/BSC_Blockchain_Store to open our Telegram channel and click JOIN GROUP on the next screen\n"
-						+ "2. Click here to register for a free account on Cappasity Token Sale Portal to claim your 5 tokens\n"
-						+ "\n" + "REMEMBER: You get 5 Cappasity tokens for accepting this invite.\n" + "\n"
 
-						+ " Or our website: https://bcschain.io" + "\n" + "BSC community\n" + "check our group\n"
-						+ "https://t.me/gogogrp";
+				messageToGroup = new SendMessage();
+				messageToGroup.setChatId(update.getMessage().getChatId()).setText(WELCOMEMESSAGE);
 
-				/*
-				 * String answer =
-				 * "You’re almost ready to claim your 5 CAPP Tokens and enter msgChecker Channel. Please accept the invite by doing the following NOW:\n"
-				 * + "\n" +
-				 * "1. Click here to open our Telegram channel and click JOIN GROUP on the next screen\n"
-				 * +
-				 * "2. Click here to register for a free account on BSC_Blockchain_Store Token Sale Portal to claim your 5 tokens\n"
-				 * + "\n" +
-				 * "If you invite a friend and they join our Telegram channel you will get 10 more Cappasity tokens!\n"
-				 * + "\n" +
-				 * "You can get a personal invite link and track you stats via step #2 above!\n"
-				 * + "\n" +
-				 * "Any questions just message our admins in our Telegram channel (https://t.me/BSC_Blockchain_Store)!\n"
-				 * + "\n" + "- BSC team\n" + "Telegram\n" + "msgChecker (Msgchk)\n" +
-				 * "Official Announcements: https://t.me/BSC_Blockchain_Store ";
-				 */
-
-				SendMessage message = new SendMessage();
-				message.setChatId(update.getMessage().getChatId()).setText(answer);
-				/*
-				 * logger.info(update.getMessage().getChat().getFirstName());
-				 */
 				try {
-					sendMessage(message); // Sending our message object to user
+					sendMessage(messageToGroup); // Sending our message object to user
 
 				} catch (TelegramApiException e) {
-
+					logger.error("problem", e);
 				}
 			}
 		}
@@ -141,7 +117,6 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 
 	@Override
 	public String getBotUsername() {
-
 		return "msgCheckerBot";
 	}
 
