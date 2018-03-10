@@ -17,14 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BotController {
 	Logger logger = LoggerFactory.getLogger(BotController.class);
+	public final static String CHANNELTOKEN = "";
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj)
 			throws JSONException, IOException {
 
-		String channelToken = "";
-
-		Map<String, Object> json = new HashMap<String, Object>();
+		Map<String, Object> json = new HashMap<>();
 
 		JSONObject jsonResult = new JSONObject(obj);
 		JSONObject rsl = jsonResult.getJSONObject("originalRequest");
@@ -37,7 +36,7 @@ public class BotController {
 		JSONObject result = jsonResult.getJSONObject("result");
 		JSONObject metadata = result.getJSONObject("metadata");
 		String intentName = metadata.getString("intentName");
-		JSONObject parameters = result.getJSONObject("parameters");
+		// JSONObject parameters = result.getJSONObject("parameters");
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 

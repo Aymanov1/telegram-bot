@@ -1,0 +1,1669 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Block Chain Store">
+<meta name="keywords" content="ICO">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- SITE TITLE -->
+<title>BCS - ブロックチェーンストア</title>
+
+<!-- =========================
+     FAV AND TOUCH ICONS AND FONT  
+    ============================== -->
+<link rel="icon" href="images/bsc-thumbnail.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152"
+	href="images/bsc-thumbnail.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120"
+	href="images/bsc-thumbnail.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="images/bsc-thumbnail.png">
+<link rel="apple-touch-icon-precomposed" href="images/bsc-thumbnail.png">
+
+<link
+	href='http://fonts.googleapis.com/css?family=Cabin:400,600|Open+Sans:300,600,400'
+	rel='stylesheet'>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T8JQF8S');</script>
+<!-- End Google Tag Manager -->
+<!-- =========================
+     STYLESHEETS   
+    ============================== -->
+<!-- BOOTSTRAP AND ANIMATION -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.min.css">
+
+<!-- FONT ICONS -->
+<link rel="stylesheet" href="assets/icons/icons.css">
+
+<!-- CAROUSEL AND LIGHTBOX -->
+<link rel="stylesheet" href="css/owl.theme.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/nivo-lightbox.css">
+<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+
+<!-- CUSTOM STYLESHEETS -->
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- RESPONSIVE FIXES -->
+<link rel="stylesheet" href="css/responsive.css">
+
+<!-- COLORS -->
+<link rel="stylesheet" href="css/colors/blue.css">
+<!-- DEFAULT COLOR/ CURRENTLY USING -->
+<!-- <link rel="stylesheet" href="css/colors/red.css"> -->
+<!-- <link rel="stylesheet" href="css/colors/green.css"> -->
+<!-- <link rel="stylesheet" href="css/colors/green2.css"> -->
+<!-- <link rel="stylesheet" href="css/colors/purple.css"> -->
+<!-- <link rel="stylesheet" href="css/colors/orange.css"> -->
+
+<!--[if lt IE 9]>
+			<script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+<!--[if gte IE 9]>
+      <style type="text/css">
+        .standard-button,
+        .navbar-register-button {
+       filter: none;
+        }
+      </style>
+    <![endif]-->
+<!-- ****************
+      After neccessary customization/modification, Please minify HTML/CSS according to http://browserdiet.com/en/ for better performance
+     **************** -->
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8JQF8S"
+			height="0" width="0" style="display: none; visibility: hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<!-- =========================
+     SECTION: HOME / HEADER  
+    ============================== -->
+	<header class="header" data-stellar-background-ratio="0.5" id="home"
+		style="background-image: url('images/background.png');">
+
+		<!-- COLOR OVER IMAGE -->
+		<div class="overlay-layer">
+
+			<!-- STICKY NAVIGATION -->
+			<div
+				class="navbar navbar bs-docs-nav navbar-fixed-top sticky-navigation appear-on-scroll"
+				role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+
+						<!-- LOGO ON STICKY NAV BAR -->
+
+						<a class="navbar-toggle" href="https://t.me/BSC_Blockchain_Store"
+							target="_blank" class="navbar-register-button"><img
+							src="https://openclipart.org/image/2400px/svg_to_png/276114/Telegram.png"
+							style="width: 30px"></a>
+
+						<button style="margin-right: 0px" type="button"
+							class="navbar-toggle" data-toggle="collapse"
+							data-target="#stamp-navigation">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-grid-2x2" style="color: #fff"></span>
+						</button>
+
+
+						<!-- LOGO -->
+						<a class="navbar-brand" href="#"> <img
+							src="images/bsc-logo-main-70px-1.png" alt="">
+						</a>
+
+					</div>
+
+					<!-- TOP BAR -->
+					<div class="navbar-collapse collapse" id="stamp-navigation">
+
+						<!-- NAVIGATION LINK -->
+						<ul class="nav navbar-nav navbar-left main-navigation small-text">
+							<li><a href="#project">BCSとは</a></li>
+							<li><a href="#roadmap">ロードマップ</a></li>
+							<li><a href="#features">特徴</a></li>
+							<li><a href="#ico">ICO</a></li>
+
+							<li><a href="#team">チーム</a></li>
+							<li><a href="#media">メディア</a></li>
+						</ul>
+
+						<!-- LOGIN REGISTER -->
+
+						<ul class="nav navbar-nav navbar-right login-register small-text">
+
+							<li class="register-button js-register inpage-scroll"><a
+								href="https://t.me/BSC_Blockchain_Store" target="_blank"
+								class="navbar-register-button">テレグラムに参加</a></li>
+
+						</ul>
+					</div>
+				</div>
+				<!-- /END CONTAINER -->
+			</div>
+			<!-- /END STICKY NAVIGATION -->
+
+			<!-- CONTAINER -->
+			<div class="container">
+
+
+
+				<!-- /END ONLY LOGO ON HEADER -->
+				<div class="row">
+					<div class="col-md-5">
+
+						<!-- HEADING AND BUTTONS -->
+						<div class="intro-section">
+							<!-- ONLY LOGO ON HEADER -->
+							<div class="only-logo">
+								<div class="navbar">
+									<div class="navbar-header">
+										<img src="images/bsc-thumbnail.png" alt="">
+									</div>
+								</div>
+							</div>
+							<!-- WELCOM MESSAGE -->
+							<h2 class="intro white-text">BLOCKCHAIN STORE - BCS</h2>
+							<h3 class="white-text">ブロックチェーン技術に基づいて構築される世界初のVR&ARオンラインショッピングモール</h3>
+
+							<!-- BUTTON -->
+							<div class="button mt-30">
+								<a style="margin: 5px" href="https://t.me/BSC_Blockchain_Store"
+									class="btn btn-lg btn-primary" target="_blank">テレグラム</a> <a
+									style="margin: 5px"
+									href="https://bcschain.io/wp-content/uploads/%e3%83%9b%e3%83%af%e3%82%a4%e3%83%88%e3%83%98%e3%82%9a%e3%83%bc%e3%83%8f%e3%82%9a%e3%83%bc-%e6%97%a5%e6%9c%ac%e8%aa%9e.pdf"
+									target="_blank" class="btn btn-lg btn-default">Whitepaper</a> <a
+									style="margin: 5px" href="mailto:contact@bcschain.io"
+									class="btn btn-lg btn-default">お問い合わせ</a>
+							</div>
+							<!-- /END BUTTON -->
+
+						</div>
+						<!-- /END HEADNING AND BUTTONS -->
+					</div>
+					<div class="col-md-7">
+						<div class="col-lg-12 mt-30">
+							<h3 class="intro white-text">ホワイトリスト登録締め切り</h3>
+						</div>
+						<div class="col-lg-12 mt-30">
+							<!-- Timer -->
+							<ul class="countdown clearlist clearfix mb-80 mb-xs-20"
+								data-finish-date="03/07/2018 00:00:00" data-UTC="2">
+
+								<li><span class="countdown-number"><span
+										class="seconds font-alt">00</span><b class="seconds_ref">seconds</b></span>
+								</li>
+								<li><span class="countdown-number"><span
+										class="minutes font-alt">00</span><b class="minutes_ref">minutes</b></span>
+								</li>
+								<li><span class="countdown-number"><span
+										class="hours font-alt">00</span><b class="hours_ref">hours</b></span>
+								</li>
+								<li><span class="countdown-number"><span
+										class="days font-alt">00</span><b class="days_ref">days</b></span></li>
+							</ul>
+							<!-- End Timer -->
+						</div>
+						<!-- <div class="col-lg-12">
+                            <h3 class="intro white-text">101,879,292 / 177,000,000 JPY 調達済み (pre-ICO + ICO)</h3>
+
+
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                            </div>
+                        </div> -->
+						<div class="col-lg-12">
+							<div class="row no-gutters">
+
+								<div
+									class="col-md-4 col-md-offset-2 single-stats wow fadeInLeft"
+									data-wow-offset="10" data-wow-duration="1.75s">
+									<div class="icon-container">
+										<span class="colored-text icon-ecommerce-money"></span>
+									</div>
+									<h4 class="white-text">30,000,000 BCS</h4>
+									<p class="uppercase transparent-text small-text">販売されたBCS</p>
+								</div>
+
+								<div
+									class="col-md-4  single-stats border-left-colored border-right-colored wow fadeIn"
+									data-wow-offset="10" data-wow-duration="1.75s">
+									<div class="icon-container">
+										<span class="colored-text icon-ecommerce-dollar"></span>
+									</div>
+									<h4 class="white-text">500,000,000 USD</h4>
+									<p class="uppercase transparent-text small-text">調達された金額</p>
+								</div>
+
+								<!-- <div class="col-md-4 col-sm-4 col-xs-4 single-stats wow fadeInRight" data-wow-offset="10" data-wow-duration="1.75s">
+                                    <div class="icon-container">
+                                        <span class="colored-text icon-man-people-streamline-user"></span>
+                                    </div>
+                                    <h4 class="white-text">250K</h4>
+                                    <p class="uppercase transparent-text small-text">
+                                        参加者
+                                    </p>
+                                </div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- =========================
+     SECTION: CLIENTS LOGOs
+    ============================== -->
+	<div class="clients white-bg">
+		<ul class="client-logos">
+			<li><a target="_blank"
+				href="https://www.youtube.com/watch?v=D1BvNHC_xeQ"><img
+					src="https://upload.wikimedia.org/wikipedia/commons/5/52/CCTV_logo.png"
+					alt=""></a></li>
+			<li><a target="_blank"
+				href="https://www.youtube.com/watch?v=01BhesQWZm0"><img
+					src="http://www.onergroup.co.th/wp-content/uploads/2015/06/Thai-CCTV.png"
+					alt=""></a></li>
+			<li><a target="_blank"
+				href="http://qd.sina.com.cn/news/1/2018-02-01/detail-ifyreyvz8166351.shtml"><img
+					src="https://cdn.worldvectorlogo.com/logos/sina-weibo.svg" alt=""></a>
+			</li>
+			<li><a target="_blank"
+				href="http://jiangsu.china.com/eco/cjxx/11180809/20180201/25172081.html"><img
+					src="https://upload.wikimedia.org/wikipedia/commons/5/5d/China_com_logo.svg"
+					alt=""></a></li>
+
+			<li><a target="_blank"
+				href="https://www.toutiao.com/i6517445392739598855/"><img
+					src="https://s3.pstatp.com/toutiao/static/img/logo.201f80d.png"
+					alt=""></a></li>
+			<li><a target="_blank"
+				href="http://hebei.ifeng.com/a/20180201/6352180_0.shtml"><img
+					src="http://p0.ifengimg.com/a/2017_13/268a00cb79a0a14.jpg" alt=""></a>
+			</li>
+			<li><a target="_blank"
+				href="http://apps.xfrb.com.cn/plus/view.php?aid=263641"><img
+					src="http://www.xfrb.com.cn/uploads/170914/50-1F914103342255.jpg"
+					alt=""></a></li>
+			<li><a target="_blank"
+				href="https://m.sohu.com/a/220246123_100088221/"><img
+					src="http://statics.itc.cn/mobile/css/images/sohu_text-43560455.png"
+					alt=""></a></li>
+		</ul>
+	</div>
+	<!-- =========================
+     SECTION: TESTIMONIALS   
+    ============================== -->
+	<section class="testimonials white-bg" id="media">
+		<div class="container">
+
+			<div class="row no-gutters mt-50">
+				<style type="text/css">
+.youtube iframe {
+	width: 100%;
+}
+</style>
+				<!-- SINGLE FEEDBACK -->
+
+				<div class="col-md-4 wow fadeInLeft col-md-offset-2"
+					data-wow-offset="10" data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<div class="youtube">
+							<iframe width="640" height="200"
+								src="https://www.youtube.com/embed/D1BvNHC_xeQ" frameborder="0"
+								allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</div>
+
+						<h5 class="colored-text">CCTV（中国）</h5>
+						<div class="small-text">中国国営放送</div>
+					</div>
+				</div>
+
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<div class="youtube">
+							<iframe width="640" height="200"
+								src="https://www.youtube.com/embed/01BhesQWZm0" frameborder="0"
+								allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</div>
+						<h5 class="colored-text">CCTV（タイ）</h5>
+						<div class="small-text">タイ国営放送</div>
+					</div>
+				</div>
+
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="http://qd.sina.com.cn/news/1/2018-02-01/detail-ifyreyvz8166351.shtml"><img
+							style="width: 100%" src="images/sina.png" alt=""></a>
+
+						<h5 class="colored-text">Sina</h5>
+					</div>
+				</div>
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="http://jiangsu.china.com/eco/cjxx/11180809/20180201/25172081.html"><img
+							style="width: 100%" src="images/chinacom.png" alt=""></a>
+
+						<h5 class="colored-text">China.com</h5>
+					</div>
+				</div>
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="https://www.toutiao.com/i6517445392739598855/"><img
+							style="width: 100%" src="images/toutiao.png" alt=""></a>
+
+						<h5 class="colored-text">今日头条</h5>
+					</div>
+				</div>
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="http://hebei.ifeng.com/a/20180201/6352180_0.shtml"><img
+							style="width: 100%" src="images/hebei.png" alt=""></a>
+
+						<h5 class="colored-text">河北频道</h5>
+					</div>
+				</div>
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="http://apps.xfrb.com.cn/plus/view.php?aid=263641"><img
+							style="width: 100%" src="images/xfrb.png" alt=""></a>
+
+						<h5 class="colored-text">消费日报</h5>
+					</div>
+				</div>
+				<!-- SINGLE FEEDBACK -->
+				<div class="col-md-4 wow fadeIn" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="feedback border-left border-right">
+						<a target="_blank"
+							href="https://www.sohu.com/a/220246123_100088221"><img
+							style="width: 100%" src="images/soho.png" alt=""></a>
+
+						<h5 class="colored-text">搜狐</h5>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- =========================
+     SECTION: SERVICES
+    ============================== -->
+	<section class="services grey-bg" id="project">
+		<div class="container">
+
+			<!-- SECTION HEADER -->
+			<div class="section-header">
+
+				<h2 class="dark-text">プロジェクトの特徴</h2>
+				<div class="colored-line"></div>
+				<div class="sub-heading">BCSはシンガポールのTSDC TECHNOLOGIES
+					PTE.LTD社が主導し、THcoin社とSDCOIN社がエンジェル投資します。米国のGlobal block chain
+					Instituteのブロックチェーン研究所が技術者を支援しています。中国科学院は基盤となるシステムの構築に参加しています。通常のブロックチェーンプロジェクトとは異なり、BCSブロックチェーンオンライストアには優れる点が3つがあります。
+				</div>
+			</div>
+
+			<div class="row">
+
+				<!-- SINGLE SERVICE -->
+				<div class="col-md-4 wow fadeInLeft" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="single-service border-bottom-hover">
+						<div class="service-icon colored-text">
+							<span class="icon-tools"></span>
+						</div>
+						<h3 class="colored-text">実用性</h3>
+						<p>グローバルなオンラインショッピングサイト、与信管理システムと、取引です。</p>
+					</div>
+				</div>
+
+				<!-- SINGLE SERVICE -->
+				<div class="col-md-4 wow flipInY" data-wow-offset="10"
+					data-wow-duration="1s">
+					<div class="single-service border-bottom-hover">
+						<div class="service-icon colored-text">
+							<span class="icon-star-alt"></span>
+						</div>
+						<h3 class="colored-text">ユニーク性</h3>
+						<p>
+							世界初の3D視覚化に基づくショッピング体験を可能にするブロックチェーン技術の応用として、BCSが画期的な3Dディスプレイと360パノラマの視覚的オプション技術を実現します。BCSはブロックチェーンVR&ARオンラインストアだけでなく、
+							"仮想世界"の新体験を提供します。</p>
+					</div>
+				</div>
+
+				<!-- SINGLE SERVICE -->
+				<div class="col-md-4 wow fadeInRight" data-wow-offset="10"
+					data-wow-duration="1.75s">
+					<div class="single-service border-bottom-hover">
+						<div class="service-icon colored-text">
+							<span class="icon-basic-magnifier-plus"></span>
+						</div>
+						<h3 class="colored-text">拡張性</h3>
+						<p>
+							BCSはより自由で、速く、より安全なブロックチェーンVR&ARオンラインストアオープンソースとなっています。プラットフォームとしてパブリックチェーンの統合、パブリックチェーンより分散型アプリケーション構築とマルチ暗号通貨交換などの機能があります。
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- =========================
+     SECTION: CALL TO ACTION   
+    ============================== -->
+	<section class="call-to-action" id=""
+		style="background: url('images/bcs-mobile-bg.png');"
+		data-stellar-background-ratio="0.1">
+		<div class="overlay-layer-2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-8 col-md-offset-2">
+
+						<div class="uppercase colored-text strong">NEO認定プロジェクト</div>
+
+						<h2 class="white-text strong wow fadeInLeft"
+							data-wow-duration="2s" data-wow-offset="40">BCSは500あるNEOのブロックチェーンの中の30に選出されています。</h2>
+
+						<a href="http://ndapp.org/"
+							class="btn btn-primary standard-button wow fadeInRight"
+							data-wow-duration="2s" data-wow-offset="40" type="button">NEO
+							dApp</a>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- =========================
+     SECTION: TIMELINE   
+    ============================== -->
+	<section class="brief timeline white-bg" id="roadmap">
+		<div class="container">
+
+			<div class="row">
+				<!-- SECTION HEADER -->
+
+				<!-- TIMELINE HEADING / TEXT  -->
+				<div class="col-md-12 timeline-text wow fadeInLeft"
+					data-wow-offset="20" data-wow-duration="1.75s">
+					<div class="small-text-medium uppercase colored-text">
+						BCSの歩み、そして未来</div>
+					<h2 class="dark-text">
+						<strong>ROADMAP</strong>
+					</h2>
+					<div class="colored-line"></div>
+
+				</div>
+
+				<!-- TIMLEINE SCROLLER -->
+				<div
+					class="col-md-8 col-md-offset-2 timeline-section wow fadeInRight"
+					data-wow-offset="14" data-wow-duration="1.0s">
+					<ul class="vertical-timeline" id="timeline-scroll">
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text colored-text strong">
+								01-Oct-2017</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">プロジェクト開始</div>
+						</li>
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">01-Nov-2017</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">コア技術チーム構築</div>
+						</li>
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">10-Nov-2017</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">プロジェクト詳細計画</div>
+						</li>
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">15-Nov-2017</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">コア運用チームを構築</div>
+						</li>
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">01-Dec-2017</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">ハイテクチーム強化・大規模人材募集</div>
+						</li>
+
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">01-Jan-2018</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">ブロックチェーン&スマートコントラクト開発開始</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">01-Feb-2018</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">複合現実エンジン開発開始</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">03-Mar-2018</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">BSC Blockchaing ソースコード公開</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">31-Aug-2018</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">複合現実エンジンDEMO</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">10-Oct-2018</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">複合現実エンジン1.0登録受付</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">10-Jan-2019</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">仮想空間オークション</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">08-Aug-2019</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">BSC広告コミュニティ独立・運営</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">13-Dec-2020</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">BSCエンターテイメントコミュニティ独立・運営</div>
+						</li>
+						<!-- SINGLE TIMELINE -->
+						<li>
+							<div class="date small-text dark-text strong">16-Dec-2020</div>
+							<div class="icon-container color-bg white-text">
+								<span class="icon-check"></span>
+							</div>
+							<div class="info">バーチャル・リアリティ資産運営</div>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+
+	<!-- =========================
+     SECTION: BENEFITS   
+    ============================== -->
+	<section class="unique-features grey-bg" id="tech">
+		<div class="container">
+
+			<!-- SECTION HEADER -->
+			<div class="section-header">
+				<div class="small-text-medium uppercase colored-text">技術的優位性</div>
+				<h2 class="dark-text">
+					<strong>BCS</strong> システム
+				</h2>
+				<div class="colored-line"></div>
+				<div class="sub-heading">
+					BCSは、ブロックチェーン内の完全にオープンソースのアプリケーションの革新です、オープンソースコードのドッキングに基づいて産業チェーンを展開します、すべてのユーザーは、オープンソースのBCSに基づいてより多くのストアアプリを作成できます、そして、BCS
+					アプリケーションストアに登録することで利益を得ることができます。</div>
+			</div>
+
+			<!-- FIRST ROW OF FEATURES -->
+			<div class="row">
+				<div class="col-md-5 col-md-offset-1 wow fadeInRight"
+					data-wow-duration="1.75s" data-wow-offset="20">
+
+					<!-- SINGLE FEATURE -->
+					<div class="feature">
+						<div class="icon-container">
+							<span class="icon-laptop colored-text"></span>
+						</div>
+						<div class="description text-left">
+							<h4 class="dark-text">取引システム</h4>
+							<div class="grey-line-short pull-left"></div>
+							<p class="text-left">
+								BCSのVR&ARオンラインストアプラットフォームのコンポーネントは、オープンソースのショッピンモールの取引システムに基づいて、C2C取引トランザクションをサポートし、商品の3D表示もサポートします。
+							</p>
+						</div>
+					</div>
+
+					<!-- SINGLE FEATURE -->
+					<div class="feature">
+						<div class="icon-container">
+							<span class="icon-arrows-clockwise-dashed colored-text"></span>
+						</div>
+						<div class="description text-left">
+							<h4 class="dark-text">暗号通貨同士の交換システム</h4>
+							<div class="grey-line-short pull-left"></div>
+							<p class="text-left">
+								BCS暗号通貨交換システムは、タイムリーな現行価格を取得し、スマートコントラクトを利用して決済判断を行います。</p>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="col-md-5 wow fadeInLeft" data-wow-duration="1.75s"
+					data-wow-offset="20">
+					<!-- SINGLE FEATURE -->
+					<div class="feature">
+						<div class="icon-container">
+							<span class="icon-datareport colored-text"></span>
+						</div>
+						<div class="description text-left">
+							<h4 class="dark-text">資産管理システム</h4>
+							<div class="grey-line-short pull-left"></div>
+							<p class="text-left">
+								BCS資産管理システムはブロックチェーンの実装を基づいて、使用およびエンドユーザの資産管理システムです。ABS基盤に基づいてスクリーニング、包装、流通、取引、期間管理などのパタンをブロックチェーン技術で運用します。
+							</p>
+						</div>
+					</div>
+
+					<!-- SINGLE FEATURE -->
+					<div class="feature">
+						<div class="icon-container">
+							<span class="icon-software-pencil colored-text"></span>
+						</div>
+						<div class="description text-left">
+							<h4 class="dark-text">スマートコントラクト(NEOをベースに)</h4>
+							<div class="grey-line-short pull-left"></div>
+							<p class="text-left">
+								BCSのスマートコントラクトは注文保護システムです。取引システム、資産システム、交換後の確認システムの組み合わせです。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- =========================
+     SECTION: SCREENSHOTS
+    ============================== -->
+	<section class="features" id="features"
+		data-stellar-background-ratio="0.5"
+		style="background: url('images/bcs-mobile-bg.png');">
+		<div class="overlay-layer-2">
+			<div class="container">
+
+				<!-- SECTION HEADER -->
+				<div class="section-header">
+					<div class="small-text-medium uppercase colored-text">
+						ここがポイント</div>
+					<h2 class="white-text">世界初のグローバル暗号化ブロックチェーンVR&ARオンラインストア</h2>
+					<div class="colored-line"></div>
+					<div class="sub-heading white-text">
+						今やブロックチェーン技術は世界中で注目されています。BCSはブロックチェーン技術を基づいて、世界初のグローバル暗号化ブロックチェーンVR&ARオンラインストアを実現させます。ブロックチェーンやVR&ARオンラインストア分野において、BCSは必ず明るい未来を切り開き、世界のショッピング環境を劇的に変えるプロジェクトに成長させていきます。
+					</div>
+				</div>
+
+				<div class="row">
+
+					<!-- LEFT SIDE ELEMENTS -->
+					<div class="col-md-3 text-right left-side wow fadeInRight"
+						data-wow-offset="10" data-wow-duration="1.75s">
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-right-colored">
+							<p class="transparent-text">実態のあるブロックチェーンストアで使用可能な仮想通貨</p>
+						</div>
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-right-colored">
+							<p class="transparent-text">各種メディア露出</p>
+						</div>
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-right-colored">
+							<p class="transparent-text">VR&ARのブロックチェーンストア</p>
+						</div>
+						<div class="single-feature border-right-colored">
+							<p class="transparent-text">BCS対応のデビットカード（契約進行中）</p>
+						</div>
+
+
+					</div>
+
+					<!-- SCREENSHOTS -->
+					<div class="col-md-6">
+						<div id="screenshots" class="owl-carousel owl-theme">
+
+							<div class="youtube">
+								<iframe width="640" height="360"
+									src="https://www.youtube.com/embed/qO9PunwrDPs" frameborder="0"
+									allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							</div>
+							<!-- <div class="screenshot">
+                                <a href="images/screenshots/1@2x.png" data-lightbox-gallery="gallery1">
+                                    <img src="images/5.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div class="screenshot">
+                                <a href="images/screenshots/1@2x.png" data-lightbox-gallery="gallery1">
+                                    <img src="images/3.jpg" alt="" />
+                                </a>
+                            </div>
+                            
+                            <div class="screenshot">
+                                <a href="images/screenshots/1@2x.png" data-lightbox-gallery="gallery1">
+                                    <img src="images/15.jpg" alt="" />
+                                </a>
+                            </div> -->
+
+						</div>
+					</div>
+
+
+					<!-- RIGHT SIDE FEATURES -->
+					<div class="col-md-3 text-left right-side wow fadeInLeft"
+						data-wow-offset="10" data-wow-duration="1.75s">
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-left-colored">
+							<p class="transparent-text">NEOベースのブロックチェーン</p>
+						</div>
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-left-colored">
+							<p class="transparent-text">スマートコントラクト搭載</p>
+						</div>
+
+
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-left-colored">
+							<p class="transparent-text">完全にオープンソースのアプリケーション</p>
+						</div>
+						<!-- SINGLE ELEMENT -->
+						<div class="single-feature border-left-colored">
+							<p class="transparent-text">イエローペーパーの公開あり（仮想通貨では少ない）</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- =========================
+     SECTION: BRIEF RIGHT
+    ============================== -->
+	<section class="brief grey-bg text-left" id="ico">
+		<div class="container">
+			<div class="row">
+
+
+
+				<!-- BRIEF HEADING -->
+				<div class="col-md-6 content-section wow fadeInRight"
+					data-wow-offset="20" data-wow-duration="1.75s">
+					<h2 class="text-left dark-text">
+						<strong>ICO</strong>について
+					</h2>
+					<div class="colored-line-left"></div>
+					<p class="text-left">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><a target="_blank"
+									href="https://bcschain.io/">ブロックチェーンストア</a>（Block Chain Store :
+									BCS）</th>
+							</tr>
+
+						</thead>
+						<tbody>
+
+							<tr>
+								<th scope="row">ホワイトペーパーホワイト</th>
+								<td>ダウンロードは<a target="_blank"
+									href="https://bcschain.io/wp-content/uploads/%e3%83%9b%e3%83%af%e3%82%a4%e3%83%88%e3%83%98%e3%82%9a%e3%83%bc%e3%83%8f%e3%82%9a%e3%83%bc-%e6%97%a5%e6%9c%ac%e8%aa%9e.pdf">こちら</a>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">ホワイトリスト（日本語）</th>
+								<td>ダウンロードは<a target="_blank" href="goo.gl/AadUU4">こちら</a>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">ホワイトリスト登録期間</th>
+								<td>2月20日～3月7日</td>
+							</tr>
+							<tr>
+								<th scope="row">ボーナス付与期間</th>
+								<td>2月20日～2月24日（ホワイトリスト登録者にボーナス権限付与）</td>
+							</tr>
+							<tr>
+								<th scope="row">トークンセール期間</th>
+								<td>3月11日～3月17日</td>
+							</tr>
+
+							<tr>
+								<th scope="row">発行総量</th>
+								<td>1億</td>
+							</tr>
+							<tr>
+								<th scope="row">技術者保有</th>
+								<td>45%</td>
+							</tr>
+							<tr>
+								<th scope="row">流通</th>
+								<td>25%</td>
+							</tr>
+							<tr>
+								<th scope="row">ボーナス割り当て</th>
+								<td>25% (プロジェクトの開発)</td>
+							</tr>
+							<tr>
+								<th scope="row">初期のコミュニティへボーナス割り当て</th>
+								<td>5%(ロックオフ50%、残りは上場後五か月以内配布)</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+					</p>
+
+
+
+				</div>
+				<!-- BRIEF IMAGE -->
+				<div class="col-md-6 wow fadeInLeft" data-wow-offset="20"
+					data-wow-duration="1.75s">
+					<div class=" mt-50">
+						<!-- FEATUR ACCORDION WITH ICON -->
+						<div class="panel-group" id="accordion">
+
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingOne">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion"
+											href="#collapseOne" aria-expanded="false"
+											aria-controls="collapseOne"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">BCSトークンとは</span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseOne" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
+										BCSトークンは、2018年内にパイロットスタートする、ブロックチェーンストア内の売買取引で使用可能な取引通貨です。このブロックチェーンストアは世界展開を視野にした構想があり、いつでもどこにいてもBCSトークンを使用した次世代型VR&ARオンラインショッピングを可能にします。
+									</div>
+								</div>
+							</div>
+
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingTwo">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseTwo"
+											aria-expanded="false" aria-controls="collapseTwo"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">BCSトークンのVR&ARオンラインストアへの有用性</span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseTwo" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingTwo">
+									<div class="panel-body">
+										BCSトークンは、NEOベースのトークンで、スマートコントラクト従って
+										NEOブロックチェーン上で分散されているトークンです。NEOは取引速度がETHの10倍以上のスピードで処理可能で、頻繁に行われる取引通貨として優れています。将来的に1秒間に100,000取引を可能にする開発を行っており、世界中で取引されるVR&ARオンラインストアの通貨として相応しいトークンになります。
+									</div>
+								</div>
+							</div>
+
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingThree">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseThree"
+											aria-expanded="false" aria-controls="collapseThree"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">BCO保有するのにどのウォレットを使えば良いですか？ </span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseThree" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingThree">
+									<div class="panel-body">
+										専用のNeonWalletに対応しているため、アカウントを開き、ご使用ください。NeonWalletへのリンクは<a
+											target="_blank" href="http://neonwallet.com/">こちら</a>です。
+									</div>
+								</div>
+							</div>
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingFour">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseFour"
+											aria-expanded="false" aria-controls="collapseFour"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">BCSトークンの価値の裏付け </span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseFour" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingFour">
+									<div class="panel-body">
+										ブロックチェーンを採用しており、NEO、BTC、ETHのような仮想通貨と同様に取引が可能で、さらに法定通貨との取引も可能です。また、BCS完全にオープンなソースコードと、イエローペーパーを公開しているため、高い技術力が存在していることが明白かと存じます。先進技術である、MR,
+										AR, VR技術を用いたブロックチェーンストアにて、今後使用可能になるため、BCSトークンの需要は更に高まって行くでしょう。
+									</div>
+								</div>
+							</div>
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingFive">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseFive"
+											aria-expanded="false" aria-controls="collapseFive"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">BCSトークンを発行するのは、どのような会社か </span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseFive" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingFive">
+									<div class="panel-body">Blockchain
+										Storeは、シンガポールにヘッドクオーターがあり、タイにR&Dオフィスを構えています。従業員の国籍は、シンガポール、タイ、日本、中国、ドイツ等、多岐に渡ります。
+									</div>
+								</div>
+							</div>
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingSix">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseSix"
+											aria-expanded="false" aria-controls="collapseSix"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">トークンセールはありますか？ </span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseSix" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingSix">
+									<div class="panel-body">
+										トークンセール期間は3月11日～3月17日までとなります。ホワイトリスト登録者以外のBCSトークンセール参加はできませんのでご注意ください。
+									</div>
+								</div>
+							</div>
+
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingSeven">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseSeven"
+											aria-expanded="false" aria-controls="collapseSeven"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">ICOに参加ための本人確認</span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseSeven" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingSeven">
+									<div class="panel-body">
+										2種類の本人確認プロセスがあります。5,000ドル未満の投資家は氏名、性別、生年月日、国籍、居住国、身分証明書の情報が必要な、簡単な本人確認が必要です。5000ドル以上の投資家には、先ほどの情報に加えて、身分証明書の写真が必要となります。<Br>
+										※BCSのICOはシンガポールで実施されるため、資家様への本人確認とマネーロンダリングに関与していないことの確認は、シンガポールの規制と法律によって義務付けられています。
+									</div>
+								</div>
+							</div>
+							<!-- SINGLE ACORDIION -->
+							<div class="panel panel-default">
+
+								<!-- ACORDIION HEADING / TITLE -->
+								<div class="panel-heading" id="headingEight">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseEight"
+											aria-expanded="false" aria-controls="collapseEight"> <span
+											class="icon-container color-bg"></span><span
+											class="title-text">KYC プロセスが必要な理由</span>
+										</a>
+									</h4>
+								</div>
+
+								<!-- ACORDIION DESCRIPTION / TEXT -->
+								<div id="collapseEight" class="panel-collapse collapse"
+									role="tabpanel" aria-labelledby="headingEight">
+									<div class="panel-body">
+										本人確認手続は標準的なレベルで実施します。クライアントの詳細を知り、その人のリスク許容度、投資知識と財務状況を把握するために行われています。本人確認のもう1つの目的として、盗難、詐欺、テロ資金やマネーロンダリングを防ぐことです。本人確認によって、私たちはクライアントが犯罪や反社会的行為に関わっていないことを確かめることで、規制当局との問題を抱えずにスムーズな取引を可能とするためです。
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- =========================
+     SECTION: TEAM   
+    ============================== -->
+	<section class="team" id="team">
+		<div class="container">
+
+			<!-- SECTION HEADER -->
+			<div class="section-header">
+				<div class="small-text-medium uppercase colored-text">
+					BCSプロジェクト</div>
+				<h2 class="dark-text">
+					<strong>グローバル</strong> チーム
+				</h2>
+				<div class="colored-line"></div>
+				<div class="sub-heading">世界中の専門的なスキルを持つメンバーで構成されています。</div>
+			</div>
+
+			<!-- MEMBERS -->
+			<div class="row wow fadeIn" data-wow-offset="10"
+				data-wow-duration="1.75s">
+
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#1"><img
+								src="https://bcschain.io/wp-content/uploads/Cheng-367x367.png"
+								alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">チェンヤン・ワン</h5>
+							<div class="small-text">テクニカルチームリーダー＆共同創業者</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#2"><img
+								src="https://bcschain.io/wp-content/uploads/Akis.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">ジョージオス・チョーキディス（Akis）</h5>
+							<div class="small-text">テクニカルディレクター＆暗号通貨技術者</div>
+						</div>
+
+					</div>
+				</div>
+
+
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<img src="https://bcschain.io/wp-content/uploads/Elena.png"
+								alt="">
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">エレナ</h5>
+							<div class="small-text">共同創業者</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#4"><img
+								src="https://bcschain.io/wp-content/uploads/Bilal.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">ビラル・ウェブエサ</h5>
+							<div class="small-text">アプリケーション＆データベース管理（バックエンド開発者）</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#5"><img
+								src="https://bcschain.io/wp-content/uploads/New.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">プードン・パノンサート（New）</h5>
+							<div class="small-text">アプリケーション＆データベース管理（バックエンド開発者）</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#6"><img
+								src="https://bcschain.io/wp-content/uploads/Jay2.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">カムチャイ・ピチツラキー（Jay）</h5>
+							<div class="small-text">ビジネスオペレーションアナリスト</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#7"><img
+								src="https://bcschain.io/wp-content/uploads/kei.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">ケイ・デレンコフ（Kei）</h5>
+							<div class="small-text">フロントエンドエンジニア（WEB設計、構築）</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#8"><img
+								src="https://bcschain.io/wp-content/uploads/Ment.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">カジョークラット・スージット（Ment）</h5>
+							<div class="small-text">IT技術者</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- MEMBER -->
+				<div class="col-md-3 col-sm-6 team-member">
+					<div class="wow flipInY" data-wow-offset="10"
+						data-wow-duration="1s">
+						<div class="member-pic">
+							<span style="cursor: pointer;" data-toggle="modal"
+								data-target="#9"><img
+								src="https://bcschain.io/wp-content/uploads/JJ-1.png" alt=""></span>
+						</div>
+						<div class="member-details">
+							<h5 class="colored-text">ヤマト・サカイ</h5>
+							<div class="small-text">オペレイティングオフィサー（日本）</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- =========================
+     SECTION: CALL TO ACTION   
+    ============================== -->
+	<section class="call-to-action"
+		style="background: url('images/bcs-mobile-bg.png');"
+		data-stellar-background-ratio="0.1">
+		<div class="overlay-layer-2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-8 col-md-offset-2">
+
+						<div class="uppercase colored-text strong">Block Chain Store
+						</div>
+
+						<h2 class="white-text strong wow fadeInLeft"
+							data-wow-duration="2s" data-wow-offset="40">ブロックチェーンの時代において新たな世界のVR&ARオンラインストアプラットフォームになります。</h2>
+
+						<a href="https://t.me/BSC_Blockchain_Store"
+							class="btn btn-primary standard-button wow fadeInRight"
+							data-wow-duration="2s" data-wow-offset="40" target="_blank">テレグラムに参加</a>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<div
+		style="position: fixed; bottom: -5px; padding: 5px; width: 100%; z-index: 9999;">
+		<div class="row">
+			<div id="new-message"
+				class="col-sm-8 col-sm-offset-2 alert alert-info"
+				style="display: none;">
+				<div class="row"
+					onclick="location.href='https://t.me/BSC_Blockchain_Store'">
+					<div class="col-xs-2">
+						<img
+							src="https://openclipart.org/image/2400px/svg_to_png/276114/Telegram.png"
+							style="width: 50px">
+					</div>
+					<div class="col-xs-10" style="text-align: left">
+						<strong>bcsico</strong>さんが新しいメッセージを投稿しました。 <small>2018/02/23
+							03:02:21</small>
+					</div>
+					<div class="col-xs-12">
+						<a href="https://t.me/BSC_Blockchain_Store"
+							class="btn btn-primary btn-small"
+							style="width: 100%; margin-top: 10px" target="_blank">テレグラムに参加</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<!-- FOOTER -->
+	<footer class="footer grey-bg" id="sns">
+		© All Rights Reserved
+
+		<!-- OPTIONAL FOOTER LINKS -->
+		<ul class="footer-links small-text">
+			<li><a href="https://bcschain.io/" target="_blank"
+				class="dark-text">公式サイト</a></li>
+			<li><a href="https://t.me/BSC_Blockchain_Store" target="_blank"
+				class="dark-text">公式テレグラム</a></li>
+			<li><a href="https://line.me/R/ti/p/%40uvt3893o" target="_blank"
+				class="dark-text">公式Line@</a></li>
+
+		</ul>
+
+		<!-- SOCIAL ICONS -->
+		<ul class="social-icons">
+			<li><a href="https://www.facebook.com/blockchainstore.bcs.5"
+				target="_blank"><span
+					class="icon-social-facebook transparent-text-dark"></span></a></li>
+			<li><a href="https://twitter.com/BCS_Official_JP"
+				target="_blank"><span
+					class="icon-social-twitter transparent-text-dark"></span></a></li>
+			<li><a
+				href="https://www.youtube.com/channel/UCwSgKAiLphfgQNgaMStw0MA/featured?view_as=subscriber"
+				target="_blank"><span
+					class="icon-social-youtube transparent-text-dark"></span></a></li>
+		</ul>
+
+	</footer>
+
+	<div class="modal fade bs-example-modal-sm" id="1" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>チェンヤン・ワン</strong>
+					</h4>
+					<p class="text-left">
+						チェンはコンピュータサイエンス、コンピュータエンジニアリング、プログラミングの分野で高い技術経験を持っており、BCSの技術部門全員にBCSのビジョンを実現するため指導しています。
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・SPETメンバー（タイのプロフェッショナルエンジニア協会）</li>
+						<li>・四川Normal大学（中国）コンピュータグラフィックス学士</li>
+						<li>・MBA-Finance、アサンプション大学（タイ）</li>
+						<li>・交換プログラム、Hochschuleマインツ、ドイツ</li>
+						<li>・SADN Group</li>
+						<li>・3D＆FXテクニカルアーティストとゲームエンジン開発（上海）</li>
+						<li>・Go-roboticsマイクロコントローラと教育用ロボットのテクニカルディレクター（タイ）</li>
+						<li>・Matrxコンピュータビジョンプロジェクトの共同設立者（タイ）</li>
+						<li>・2013年に鉱山事業を開始し、ブロックチェーン研究に加わりました</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="2" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>ジョージオス・チョーキディス（Akis）</strong>
+					</h4>
+					<p class="text-left">
+						Akisは数学および暗号の専門家であり、15年間のソフトウェア開発経験を持つ分散コンピューティングエンジニアです。彼はチームの中核であり、長年の経験を持ち、チームを1つのチームとして機能させるために仕事を適切に委託する方法を知っています。
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・NeoとEthereumのブロックチェーンでの業務経験</li>
+						<li style="font-weight: 600">・数学と暗号の高い知識</li>
+						<li style="font-weight: 600">・コンピュータセキュリティ専門家</li>
+						<li>・数学：微積分、線形代数、理論設計、数論、コンビナトリアルと確率、ゲーム理論</li>
+						<li>・コンピュータ言語：C、Java、Python、PHP</li>
+						<li>・暗号解読</li>
+						<li>・データベース：SQL、noSQLデータベース、分散データベースアーキテクチャ</li>
+						<li>・3D＆FXテクニカルアーティストとゲームエンジン開発（上海）</li>
+						<li>・Linux管理者</li>
+						<li>・コンピュータセキュリティ</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="4" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>ビラル・ウェブエサ</strong>
+					</h4>
+					<p class="text-left">
+						ビラルは、経験豊かなアプリケーションとデータベース管理（バックエンド開発者）としてチームに加わり、BCSチームにとって非常に重要な部分を担っています。
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・ソンクラー大学プリンスオブエンジニアリング（メカトロニクス工学）</li>
+						<li style="font-weight: 600">・PythonとJavaを使用したWebアプリケーション熟練開発</li>
+						<li style="font-weight: 600">・MCS-51、Arm7（LPC2138）、ArduinoでC
+							/ C ++のシステム開発</li>
+						<li>・ロボットシステムにおけるコンピュータビジョンの経験</li>
+						<li>・屋内測位システムプロジェクトの研究開発（MATLABおよびC ++）</li>
+						<li>・ロボットシステムにおけるコンピュータビジョンの経験</li>
+						<li>・UAVシステムプロジェクトにおける研究開発（C＃とPython）</li>
+						<li>・Pythonプログラミング、建築モデリングプロジェクトの経験</li>
+						<li>・サイバーセキュリティ分野経験、Kali Linuxによるハッキングテスト</li>
+						<li>・Linux（CentOS）を使用したサーバー管理経験</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="5" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>プードン・パノンサート（New）</strong>
+					</h4>
+					<p class="text-left">
+						ブロックチェーンの皇帝とも呼ばれるNewは、チームの中核のような存在です。これまで、ブロックチェーンプロジェクトを完成させてきました、また、プログラミングに膨大な知識と経験を持っていて、彼の参加で無敵のチームとなりました。
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・ブロックチェーンプロジェクト業務経験</li>
+						<li style="font-weight: 600">・Ethereum、Bitcoin、Neoブロックチェイン技術の豊富な経験</li>
+						<li style="font-weight: 600">・拡張現実感（AR）プラットフォーム業務経験</li>
+						<li>・言語：C、C ++、JAVA、C＃、node.js、Javascript ES6、PHP
+							OS：Windows、CentOS Linux、Ubuntu</li>
+						<li>・データベース：MySQL、SQL Server、Oracle、PostgreSQL、MongoDB</li>
+						<li>・ICOウェブサイト構築</li>
+						<li>・大規模電子商取引Webアプリケーション構築</li>
+						<li>・プーケット国際空港建設アプリケーション構築</li>
+						<li>・拡張現実（AR）プラットフォーム構築</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="6" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>カムチャイ・ピチツラキー（Jay）</strong>
+					</h4>
+					<p class="text-left">
+						Jayは、タイの成功を収めた、ブロックチェーンプロジェクトの一員として、グローバル市場をターゲットにしたセールスとマーケティングに携わっていました。
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・Assumption大学（タイ）卒業、BBA（人材マネージメント）</li>
+						<li>・ビジネス・アンド・エコノミー大学院（中国）卒業、IBM</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="7" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>ケイ・デレンコフ（Kei）</strong>
+					</h4>
+					<p class="text-left">
+						IT技術のオールラウンドプレイヤーで、フロントエンドのデザインにユニークな命を吹き込みます。15年間ウェブサイトデザイナーを経験後、Keiは多くのWeb関連スキルを習得しました。彼は現在、熟練したPHPプログラマーであり、React、Express、AngularなどのさまざまなJavaScriptライブラリにおいて完璧な知識を持っています。
+					</p>
+					<p class="text-left">
+
+						KeiはBitcoin創世記からブロックチェーン技術への関心を持ち始めました。まず、彼はマイニング事業を開始し、すぐに基盤技術に魅了され、彼はブロックチェーンと暗号通貨に関連するプロジェクトに積極的に参加しました。
+
+						これまで、Keiはデザイナーとしても開発者としても、フロントエンド開発者として多数のブロックチェーン関連プロジェクトに取り組んできました。
+
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・HTML5とCSS3の高度技術</li>
+						<li style="font-weight: 600">・JavaScriptとjQuery / AJAXに熟練</li>
+						<li style="font-weight: 600">・PHP、フレームワーク経験</li>
+						<li style="font-weight: 600">・フロントエンド開発者として複数のブロックチェーン関連プロジェクトに従事</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="8" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>カジョークラット・スージット（Ment）</strong>
+					</h4>
+					<p class="text-left">
+						Mentは、コンピュータのハードウェアとネットワーキングに大きな知識を持っている、若くてパッションのあるIT技術者です。彼はプロジェクトがIT部門内で円滑に遂行されるように対応していきます。
+
+					</p>
+					<p class="text-left">
+
+						Mentは幼少からハードウェア関連業務に魅了されてきました。18歳で、彼は自身のハードウェアコンポーネントを構築し始め、Raspberry
+						Pisや、Arduinosにインスパイアされ、最終的に自からで構築したコンポーネントで独自のマイクロコントローラを構築しました。コンピュータハードウェアとそれを動作させるために必要な電子部品についての彼の広範な知識と経験は、BCSチームにとって大きな資産となっています。
+
+
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・コンピュータハードウェア高度技術</li>
+						<li style="font-weight: 600">・JavaScriptとjQuery / AJAXに熟練</li>
+						<li style="font-weight: 600">・エレクトロニクスのシステム高度技術</li>
+						<li style="font-weight: 600">・ネットワーキング領域の多岐に渡る経験</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-sm" id="9" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="vertical-registration-form">
+					<h4 class="dark-text form-heading">
+						<strong>ヤマト・サカイ</strong>
+					</h4>
+					<p class="text-left">
+						サカイは、BCSのオペレーションオフィサーとして、BCSと日本への架け橋として重要な役割を持っています。約10年間のマーケティング経験を保有しており、日本のマーケットメイクに精通しています。
+
+
+					</p>
+					<p class="text-left">
+
+						サカイは、WEBベンチャー創業経験はじめ、多くのマーケティング業務に携わってきました。世界最高峰のP&Gマーケティングで、5ブランドのマネージャーとして年間総合予算約85億円の広告予算のカテゴリーのチームマネージメントを行う。常に最先端のマーケティング手法を取り入れ、マーケットシェアの拡大に大きな力を持っています。銀行、投資業にも従事しており、ファイナンス、投資についても幅広い知識と経験を持つ。
+
+
+					</p>
+					<ul class="text-left">
+						<li style="font-weight: 600">・高度な日本市場マーケティング知識とスキル</li>
+						<li style="font-weight: 600">・SNSコミュニティ運営経験</li>
+						<li style="font-weight: 600">・ブロックチェーンプロジェクトコンサルティング経験</li>
+						<li style="font-weight: 600">・広告、RP経験</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- =========================
+     SCRIPTS   
+    ============================== -->
+	<script src="js/jquery.min.js"></script>
+	<script>
+    $(function(){
+        function telegram(){
+            setTimeout(function(){
+                $("#new-message").slideDown("slow");
+            },1000);
+            setTimeout(function(){
+                $("#new-message").fadeOut("slow");
+            },3000);
+            setTimeout(function(){telegram()}, 3100);
+        }
+        telegram();
+    });
+    </script>
+
+	<script src="js/smoothscroll.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/nivo-lightbox.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/retina.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script type="text/javascript" src="js/jquery.downCount.js"></script>
+
+	<!-- GOGLE MAP -->
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<!-- CUSTOM JS  -->
+	<script src="js/custom.js"></script>
+
+</body>
+
+</html>

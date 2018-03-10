@@ -22,7 +22,6 @@ public class MessageTable implements Serializable {
 	private String date;
 	@Column(length = 1100)
 	private String messageText;
-	private String forwardFromChat;
 
 	public MessageTable() {
 		super();
@@ -78,12 +77,5 @@ public class MessageTable implements Serializable {
 		this.messageText = messageText;
 	}
 
-	public String getForwardFromChat() {
-		return forwardFromChat;
-	}
-
-	public void setForwardFromChat(String forwardFromChat) {
-		this.forwardFromChat = forwardFromChat;
-	}
 
 }
