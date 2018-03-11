@@ -1,5 +1,6 @@
 package com.hrdatabank.telegram.api;
 
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +34,11 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private MessageTable messageToRetreive;
 	TelegramBotsApi botsApi = new TelegramBotsApi();
-	public static final String WELCOMEMESSAGE = "Hello!!!. Please accept the invite by doing the following NOW:\n"
-			+ "\n"
-			+ "1. https://t.me/BSC_Blockchain_Store to open our Telegram channel and click JOIN GROUP on the next screen\n"
-			+ "2. Click here to register for a free account on the following form:\n https://docs.google.com/forms/d/e/1FAIpQLSd3staanV3WP_SNVEkOY8nRM62PXsLoa0g7xhmgEjHu77Du_Q/viewform"
-			+ "\n" + " Or our website: https://bcschain.io" + "\n" + "BSC community\n" + "check our group\n"
-			+ "https://t.me/gogogrp";
+	public static final String WELCOMEMESSAGE = "Astonishing News! Your friend has just joined BAKU group!";
 
 	public static final String THANKSMESSAGE = "ありがとうございました。";
-
+	public static final String ENCODE = "ENCODE";
+	public static final String DECODE = "DECODE";
 	@Autowired
 	MessageTableService messageTableService;
 
@@ -71,6 +68,11 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	public void onUpdateReceived(Update update) {
 		// We check if the update has a message and the message has text
 		SendMessage messageToGroup = new SendMessage();
+		String answer = "Thank you for joining BAKU group!\n" + "https://saehyungjung.typeform.com/to/lDpjGV?t="
+				+ update.getMessage().getFrom().getId() + "}\n" + "Send your wallet code and grant 5BAK.\n" + "\n"
+				+ "And you can grant another 5BAK/person if you invite your friend.\n"
+				+ "Here is your invitiation link!\n" + "https://t.me/msgCheckerBot?start="
+				+ encryptDecryptData(ENCODE, update.getMessage().getFrom().getId().toString());
 		if (update.hasMessage() && update.getMessage().hasText()) {
 
 			messageToRetreive = new MessageTable();
@@ -90,19 +92,27 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 				} catch (TelegramApiException e) {
 					logger.error("problem on send message", e);
 				} finally {
-					SendMessage privateMessage = new SendMessage();
+					if (!update.getMessage().getNewChatMembers().isEmpty()) {
+						update.getMessage().getNewChatMembers().get(update.getMessage().getNewChatMembers().size())
+								.getId();
+						SendMessage privateMessage = new SendMessage();
 
-					privateMessage.setChatId((long) 460915355).setText(WELCOMEMESSAGE);
-					try {
-						sendMessage(privateMessage);
-					} catch (TelegramApiException e) {
-						logger.error("problem", e);
+						privateMessage
+								.setChatId((long) update.getMessage().getNewChatMembers()
+										.get(update.getMessage().getNewChatMembers().size()).getId())
+								.setText(WELCOMEMESSAGE);
+						try {
+							sendMessage(privateMessage);
+						} catch (TelegramApiException e) {
+							logger.error("problem", e);
+						}
 					}
+
 				}
 			} else {
 
 				messageToGroup = new SendMessage();
-				messageToGroup.setChatId(update.getMessage().getChatId()).setText(WELCOMEMESSAGE);
+				messageToGroup.setChatId(update.getMessage().getChatId()).setText(answer);
 
 				try {
 					sendMessage(messageToGroup); // Sending our message object to user
@@ -113,6 +123,13 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 			}
 		}
 
+	}
+
+	public String encryptDecryptData(String strategy, String data) {
+		String value;
+		value = (strategy.equals(ENCODE)) ? new String(Base64.encodeBase64(data.getBytes()))
+				: new String(Base64.decodeBase64(data));
+		return value;
 	}
 
 	@Override
