@@ -1,5 +1,7 @@
 package com.hrdatabank.telegram.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +20,13 @@ public class MessageTableService {
 	public void setMessageTableRepository(MessageTableRepository messageTableRepository) {
 		this.messageTableRepository = messageTableRepository;
 	}
-	
-	
+
 	public MessageTable saveMessageTable(MessageTable messageTable) {
 		return messageTableRepository.save(messageTable);
 	}
-	
+
+	public List<String> findByFromUserMessageTable(String fromUser) {
+		return messageTableRepository.findByFromUser(fromUser);
+	}
+
 }
