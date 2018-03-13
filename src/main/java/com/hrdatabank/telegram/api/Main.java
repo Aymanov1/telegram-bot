@@ -24,8 +24,10 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import com.hrdatabank.telegram.entities.LinkedUserTarget;
 import com.hrdatabank.telegram.entities.MessageTable;
+import com.hrdatabank.telegram.entities.Wallet;
 import com.hrdatabank.telegram.services.LinkedUserTargetService;
 import com.hrdatabank.telegram.services.MessageTableService;
+import com.hrdatabank.telegram.services.WalletService;
 
 @Configuration
 @ComponentScan(basePackages = { "com.hrdatabank.telegram.api" })
@@ -44,6 +46,8 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	MessageTableService messageTableService;
 	@Autowired
 	LinkedUserTargetService linkedUserTargetService;
+	@Autowired
+	WalletService walletService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
@@ -91,11 +95,11 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	@Override
 	public void onUpdateReceived(Update update) {
 		// We check if the update has a message and the message has text
-		String answer = "Thank you for joining BAKU group!\n" + "https://saehyungjung.typeform.com/to/lDpjGV?t="
-				+ update.getMessage().getFrom().getId() + "}\n" + "Send your wallet code and grant 5BAK.\n" + "\n"
-				+ "And you can grant another 5BAK/person if you invite your friend.\n"
-				+ "Here is your invitiation link!\n" + "https://t.me/msgCheckerBot?start=" + encryptDecryptData(
-						StaticVariables.ENCODE.getValue(), update.getMessage().getFrom().getId().toString());
+		String answer = "GOLの公式グループに参加いただきありがとうございます！\n" + "10GOLTを贈呈致します。\n" + "\n"
+				+ "※ 後日、GOLTを贈呈する為のウォレットアドレスを入力するフォームをお送り致します。\n" + "\n" + "また、ご友人をGOLに誘ってみませんか？\n"
+				+ "下記のURLからご友人の方がGOLの公式グループに参加しましたら、その都度更に10GOLTを贈呈します。\n" + "\n" + "もちろん、参加されたご友人にも10GOLTを贈呈致します。\n"
+				+ "https://t.me/msgCheckerBot?start=" + encryptDecryptData(StaticVariables.ENCODE.getValue(),
+						update.getMessage().getFrom().getId().toString());
 		/***************************/
 
 		// case of existing message on updates
@@ -123,6 +127,18 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 					} else if (part2 == null || part2.equalsIgnoreCase(""))
 						sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 								StaticVariables.WELCOME_MESSAGE.getValue());
+					/**************** wallet case **********************/
+					// if the user prints /wallet
+					/*
+					 * else if (part1.equalsIgnoreCase("/wallet")) if (!part2.equalsIgnoreCase(""))
+					 * { // if message is /wallet with idUser // send message welcome to bot and
+					 * this is your target group, join it!! Wallet wallet = new
+					 * Wallet(update.getMessage().getFrom().getId().toString(), part2);
+					 * walletService.saveWallet(wallet);
+					 * sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+					 * StaticVariables.WELCOME_MESSAGE.getValue()); }
+					 */
+					/************************ end wallet case ***********************/
 					else
 						sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 								StaticVariables.WELCOME_MESSAGE.getValue());
@@ -132,7 +148,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 				// otherwise help message
 			} else if (update.getMessage().getChatId().toString()
 					.equalsIgnoreCase(StaticVariables.ID_ROOM_GROUP.getValue())) {
-				if (update.getMessage().getText().toString().contains("/start")) {
+				if (update.getMessage().getText().contains("/start")) {
 					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 							StaticVariables.THANKS_MESSAGE.getValue());
 					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
@@ -143,7 +159,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 			}
 			// handle start command inside the bot
 			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()
-					&& update.getMessage().getText().toString().equals("/start"))
+					&& update.getMessage().getText().equals("/start"))
 				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 						StaticVariables.WELCOME_MESSAGE.getValue());
 
@@ -151,24 +167,24 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 
 		// thanks message to joiner group
 		// send target answer message with invitation link and some details
-		update.getMessage().getNewChatMembers().forEach(e ->
-
-		{
+		update.getMessage().getNewChatMembers().forEach(e -> {
 			List<LinkedUserTarget> linkedUserTargets = linkedUserTargetService
 					.findLinkedUserTarget(e.getId().toString());
-			if (!linkedUserTargets.isEmpty()) {
-				if (!linkedUserTargets.get(0).isSentInvitation()) {
-					sendMessageToChannel(linkedUserTargets.get(0).getFromUser(),
-							StaticVariables.NOTIFICATION_MESSAGE.getValue());
-					// turn the flag to true of sending invitation
-					linkedUserTargets.get(0).setSentInvitation(true);
-					linkedUserTargetService.deleteLinkedUserTarget(linkedUserTargets.get(0));
-					linkedUserTargetService.saveLinkedUserTarget(linkedUserTargets.get(0));
-				}
+			if (!linkedUserTargets.isEmpty() && !linkedUserTargets.get(0).isSentInvitation()) {
+				sendMessageToChannel(linkedUserTargets.get(0).getFromUser(),
+						StaticVariables.NOTIFICATION_MESSAGE.getValue() + "\n https://t.me/msgCheckerBot?start="
+								+ encryptDecryptData(StaticVariables.ENCODE.getValue(),
+										linkedUserTargets.get(0).getFromUser()));
+				// turn the flag to true of sending invitation
+				linkedUserTargets.get(0).setSentInvitation(true);
+				linkedUserTargetService.deleteLinkedUserTarget(linkedUserTargets.get(0));
+				linkedUserTargetService.saveLinkedUserTarget(linkedUserTargets.get(0));
 			}
+
 			sendMessageToChannel(e.getId().toString(), StaticVariables.THANKS_MESSAGE.getValue());
 			sendMessageToChannel(e.getId().toString(), answer);
 		});
+
 		/********* finish join group messages **********************/
 
 	}

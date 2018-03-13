@@ -35,7 +35,11 @@ public class LinkedUserTargetService {
 				linkedUserTarget.getIdLinkedUserTarget());
 	}
 
-	public List<LinkedUserTarget> findLinkedUserTarget(String fromUser) {
-		return linkedUserTargetRepository.find(fromUser);
+	public List<LinkedUserTarget> findLinkedUserTarget(String targetUser) {
+		return linkedUserTargetRepository.find(targetUser);
+	}
+
+	public int countInvitedLinkedUserTarget(String fromUser) {
+		return linkedUserTargetRepository.count(fromUser);
 	}
 }
