@@ -6,6 +6,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,6 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import com.hrdatabank.telegram.entities.LinkedUserTarget;
 import com.hrdatabank.telegram.entities.MessageTable;
-import com.hrdatabank.telegram.entities.Wallet;
 import com.hrdatabank.telegram.services.LinkedUserTargetService;
 import com.hrdatabank.telegram.services.MessageTableService;
 import com.hrdatabank.telegram.services.WalletService;
@@ -41,6 +41,12 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private MessageTable messageToRetreive;
 	TelegramBotsApi botsApi = new TelegramBotsApi();
+
+	@Value("${bot.token}")
+	private String token;
+
+	@Value("${bot.username}")
+	private String username;
 
 	@Autowired
 	MessageTableService messageTableService;
@@ -98,7 +104,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 		String answer = "GOLの公式グループに参加いただきありがとうございます！\n" + "10GOLTを贈呈致します。\n" + "\n"
 				+ "※ 後日、GOLTを贈呈する為のウォレットアドレスを入力するフォームをお送り致します。\n" + "\n" + "また、ご友人をGOLに誘ってみませんか？\n"
 				+ "下記のURLからご友人の方がGOLの公式グループに参加しましたら、その都度更に10GOLTを贈呈します。\n" + "\n" + "もちろん、参加されたご友人にも10GOLTを贈呈致します。\n"
-				+ "https://t.me/msgCheckerBot?start=" + encryptDecryptData(StaticVariables.ENCODE.getValue(),
+				+ "https://t.me/" + username + "?start=" + encryptDecryptData(StaticVariables.ENCODE.getValue(),
 						update.getMessage().getFrom().getId().toString());
 		/***************************/
 
@@ -106,15 +112,20 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// case of chat with the bot directly
 			savingMessages(update.getMessage());
+			if (update.getMessage().getText().contains(StaticVariables.START.getValue())
+					&& update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()) {
+				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+						StaticVariables.WELCOME_MESSAGE.getValue());
+			}
 			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()) {
 				// retreive message content
-				String urlPattern = update.getMessage().getText().toString();
+				String urlPattern = update.getMessage().getText();
 				String[] parts = urlPattern.split(" ");
 				String part1 = parts[0];
 				String part2 = parts[1];
 				// extract idUser by decoding using base64 encoding
 				String idUser = encryptDecryptData(StaticVariables.DECODE.getValue(), part2);
-				if (part1.equalsIgnoreCase("/start"))
+				if (part1.equalsIgnoreCase(StaticVariables.START.getValue()))
 					if (part2 != null && !part2.equalsIgnoreCase("")) {
 						// if message is /start with idUser
 						// send message welcome to bot and this is your target group, join it!!
@@ -148,7 +159,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 				// otherwise help message
 			} else if (update.getMessage().getChatId().toString()
 					.equalsIgnoreCase(StaticVariables.ID_ROOM_GROUP.getValue())) {
-				if (update.getMessage().getText().contains("/start")) {
+				if (update.getMessage().getText().contains(StaticVariables.START.getValue())) {
 					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 							StaticVariables.THANKS_MESSAGE.getValue());
 					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
@@ -158,10 +169,10 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 							StaticVariables.HELP_MESSAGE.getValue());
 			}
 			// handle start command inside the bot
-			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()
-					&& update.getMessage().getText().equals("/start"))
-				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
-						StaticVariables.WELCOME_MESSAGE.getValue());
+//			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()
+//					&& update.getMessage().getText().equals(StaticVariables.START.getValue()))
+//				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+//						StaticVariables.WELCOME_MESSAGE.getValue());
 
 		}
 
@@ -172,7 +183,7 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 					.findLinkedUserTarget(e.getId().toString());
 			if (!linkedUserTargets.isEmpty() && !linkedUserTargets.get(0).isSentInvitation()) {
 				sendMessageToChannel(linkedUserTargets.get(0).getFromUser(),
-						StaticVariables.NOTIFICATION_MESSAGE.getValue() + "\n https://t.me/msgCheckerBot?start="
+						StaticVariables.NOTIFICATION_MESSAGE.getValue() + "\n https://t.me/" + username + "?start="
 								+ encryptDecryptData(StaticVariables.ENCODE.getValue(),
 										linkedUserTargets.get(0).getFromUser()));
 				// turn the flag to true of sending invitation
@@ -198,13 +209,13 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 
 	@Override
 	public String getBotUsername() {
-		return "msgCheckerBot";
+		return username;
 	}
 
 	@Override
 	public String getBotToken() {
 		// Return bot token from BotFather
-		return "554633303:AAGhg6Eyankjit1JJrHiZ1w-6u0nT3iM0qM";
+		return token;
 	}
 
 	public MessageTable getMessageToRetreive() {
