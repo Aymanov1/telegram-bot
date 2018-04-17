@@ -27,4 +27,8 @@ public class WalletService {
 		walletRepository.delete(wallet);
 	}
 
+	
+	public Wallet findByIDUserWallet(String idUser) {
+		return walletRepository.findByIdUser(idUser);
+	}
 }

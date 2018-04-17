@@ -1,42 +1,33 @@
-# Telegram Spring Boot Starter
+# Telegram Bot
 
-[![Build Status](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter.svg?branch=master)](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter) [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
+<h1 align="center">
+  <br>
+  <img src="tel.jpeg" height="300" width="300"/>
+  <br>
+  Telegram Bot 
+  <br>
+<h4 align="center">A small app for managing virtual coins(Java).</h4>
 
-This is a starter pom for a spring boot application with the [TelegramBots Java API](https://github.com/rubenlagus/TelegramBots).
+<hr>
+<p>Telegram Bot is a java sample based on Telegram Api to make a chat sample.</p>
 
-First, you need to add jitpack as a repository to your pom of your spring boot app
+<br><br>
+## Tools
 
-```xml
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
+<ul>
+<li> Spring Boot </li>
+<li> Telegram API </li>
+</ul>
 
-Then you have to add the following dependency to the pom
+<br><br>
+## API Reference
 
-```xml
-<dependency>
-	<groupId>com.github.xabgesagtx</groupId>
-	<artifactId>telegram-spring-boot-starter</artifactId>
-	<version>0.14</version>
-</dependency>
-```
+**Telegram Bot** is developed under the highlights of <a href="https://core.telegram.org/api">Telegram API</a>
 
-The only thing you need to do now is to create a bean for a bot. E.g.:
+<br><br>
+## Credits
 
-```java
-@Component
-public class Bot extends TelegramLongPollingBot {
-...
-} 
-```
+This software uses code from several open source packages.
 
-The bot will then be registered for you automatically on startup.
- 
-
-# Example
-
-An [implementation example](https://github.com/xabgesagtx/telegram-spring-boot-starter-example) is available too.
+- [Telegram core API](https://core.telegram.org/api)
+- [Heroku](https://dashboard.heroku.com/)

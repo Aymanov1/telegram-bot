@@ -20,6 +20,8 @@ public class LinkedUserTargetService {
 	public void setLinkedUserTargetRepository(LinkedUserTargetRepository linkedUserTargetRepository) {
 		this.linkedUserTargetRepository = linkedUserTargetRepository;
 	}
+	
+	
 
 	public LinkedUserTarget saveLinkedUserTarget(LinkedUserTarget linkedUserTarget) {
 		return linkedUserTargetRepository.save(linkedUserTarget);

@@ -1,5 +1,6 @@
 package com.hrdatabank.telegram.api;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
@@ -25,6 +26,7 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import com.hrdatabank.telegram.entities.LinkedUserTarget;
 import com.hrdatabank.telegram.entities.MessageTable;
+import com.hrdatabank.telegram.entities.Wallet;
 import com.hrdatabank.telegram.services.LinkedUserTargetService;
 import com.hrdatabank.telegram.services.MessageTableService;
 import com.hrdatabank.telegram.services.WalletService;
@@ -88,12 +90,9 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	}
 
 	public void savingMessages(Message messageTosave) {
-		MessageTable messageToRetreive = new MessageTable();
-		messageToRetreive.setFromUser(messageTosave.getFrom().getId().toString());
-		messageToRetreive.setDate(messageTosave.getDate().toString());
-		messageToRetreive.setMessageIdTelegram(messageTosave.getChatId().toString());
-		messageToRetreive.setMessageText(messageTosave.getText());
-		messageTableService.saveMessageTable(messageToRetreive);
+		messageTableService.saveMessageTable(
+				new MessageTable(messageTosave.getChatId().toString(), messageTosave.getFrom().getId().toString(),
+						messageTosave.getDate().toString(), messageTosave.getText()));
 
 	}
 
@@ -101,21 +100,41 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 	@Override
 	public void onUpdateReceived(Update update) {
 		// We check if the update has a message and the message has text
-		String answer = "GOLの公式グループに参加いただきありがとうございます！\n" + "10GOLTを贈呈致します。\n" + "\n"
-				+ "※ 後日、GOLTを贈呈する為のウォレットアドレスを入力するフォームをお送り致します。\n" + "\n" + "また、ご友人をGOLに誘ってみませんか？\n"
-				+ "下記のURLからご友人の方がGOLの公式グループに参加しましたら、その都度更に10GOLTを贈呈します。\n" + "\n" + "もちろん、参加されたご友人にも10GOLTを贈呈致します。\n"
-				+ "https://t.me/" + username + "?start=" + encryptDecryptData(StaticVariables.ENCODE.getValue(),
-						update.getMessage().getFrom().getId().toString());
+		String answer = StaticVariables.FIRST_ANSWER.getValue() + encryptDecryptData(StaticVariables.ENCODE.getValue(),
+				update.getMessage().getFrom().getId().toString());
 		/***************************/
 
 		// case of existing message on updates
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// case of chat with the bot directly
 			savingMessages(update.getMessage());
-			if (update.getMessage().getText().contains(StaticVariables.START.getValue())
+			// if the user prints /wallet_check
+			if (update.getMessage().getText().equalsIgnoreCase(StaticVariables.WALLET_CHECK_COMMAND.getValue())) {
+				// if message is /wallet_check with idUser
+				if (walletService.findByIDUserWallet(update.getMessage().getFrom().getId().toString()) != null) {
+					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+							StaticVariables.WALLET_CHECKING_MESSAGE.getValue()
+									+ walletService.findByIDUserWallet(update.getMessage().getFrom().getId().toString())
+											.getWalletCode());
+				} else {
+					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+							StaticVariables.ERROR_CHECKING_WALLET.getValue());
+				}
+
+			}
+
+			// error on wallet id saving
+			if (update.getMessage().getText().equalsIgnoreCase(StaticVariables.WALLET_SAVE_COMMAND.getValue())) {
+				// if message is /wallet with idUser
+				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+						StaticVariables.ERROR_SAVING_WALLET.getValue());
+			}
+			// only start command
+			if (update.getMessage().getText().equals(StaticVariables.START.getValue())
 					&& update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()) {
 				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 						StaticVariables.WELCOME_MESSAGE.getValue());
+				return;
 			}
 			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()) {
 				// retreive message content
@@ -132,27 +151,38 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 						sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 								StaticVariables.WELCOME_MESSAGE.getValue());
 						LinkedUserTarget linkedUserTarget = new LinkedUserTarget(
-								update.getMessage().getFrom().getId().toString(), idUser);
+								update.getMessage().getFrom().getId().toString(), idUser, new Date());
 						if (!update.getMessage().getFrom().getId().toString().equalsIgnoreCase(idUser))
 							linkedUserTargetService.saveLinkedUserTarget(linkedUserTarget);
 					} else if (part2 == null || part2.equalsIgnoreCase(""))
 						sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 								StaticVariables.WELCOME_MESSAGE.getValue());
-					/**************** wallet case **********************/
-					// if the user prints /wallet
-					/*
-					 * else if (part1.equalsIgnoreCase("/wallet")) if (!part2.equalsIgnoreCase(""))
-					 * { // if message is /wallet with idUser // send message welcome to bot and
-					 * this is your target group, join it!! Wallet wallet = new
-					 * Wallet(update.getMessage().getFrom().getId().toString(), part2);
-					 * walletService.saveWallet(wallet);
-					 * sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
-					 * StaticVariables.WELCOME_MESSAGE.getValue()); }
-					 */
-					/************************ end wallet case ***********************/
+
 					else
 						sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 								StaticVariables.WELCOME_MESSAGE.getValue());
+
+				/**************** wallet case **********************/
+				// if the user prints /wallet_save
+				if (part1.equalsIgnoreCase(StaticVariables.WALLET_SAVE_COMMAND.getValue()) && part2 != null
+						&& !part2.equalsIgnoreCase("")) {
+					// if message is /wallet with idUser
+					if (walletService.findByIDUserWallet(update.getMessage().getFrom().getId().toString()) == null) {
+						Wallet wallet = new Wallet(update.getMessage().getFrom().getId().toString(), part2);
+						walletService.saveWallet(wallet);
+
+					} else {
+						walletService.deleteWallet(
+								walletService.findByIDUserWallet(update.getMessage().getFrom().getId().toString()));
+						Wallet wallet = new Wallet(update.getMessage().getFrom().getId().toString(), part2);
+						walletService.saveWallet(wallet);
+
+					}
+					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+							StaticVariables.WALLET_SAVING_SUCCESSFULLY.getValue());
+				}
+
+				/************************ end wallet case ***********************/
 				/********** start case finished *********/
 				// handle messages bot into the group using id_room
 				// returns thanks if you print /start
@@ -164,15 +194,16 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 							StaticVariables.THANKS_MESSAGE.getValue());
 					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
 							StaticVariables.WELCOME_MESSAGE.getValue());
-				} else
-					sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
-							StaticVariables.HELP_MESSAGE.getValue());
+				} else {
+					return;
+				}
 			}
 			// handle start command inside the bot
-//			if (update.getMessage().getChatId() == (long) update.getMessage().getFrom().getId()
-//					&& update.getMessage().getText().equals(StaticVariables.START.getValue()))
-//				sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
-//						StaticVariables.WELCOME_MESSAGE.getValue());
+			// if (update.getMessage().getChatId() == (long)
+			// update.getMessage().getFrom().getId()
+			// && update.getMessage().getText().equals(StaticVariables.START.getValue()))
+			// sendMessageToChannel(update.getMessage().getFrom().getId().toString(),
+			// StaticVariables.WELCOME_MESSAGE.getValue());
 
 		}
 
@@ -182,14 +213,26 @@ public class Main extends TelegramLongPollingBot implements CommandLineRunner {
 			List<LinkedUserTarget> linkedUserTargets = linkedUserTargetService
 					.findLinkedUserTarget(e.getId().toString());
 			if (!linkedUserTargets.isEmpty() && !linkedUserTargets.get(0).isSentInvitation()) {
-				sendMessageToChannel(linkedUserTargets.get(0).getFromUser(),
-						StaticVariables.NOTIFICATION_MESSAGE.getValue() + "\n https://t.me/" + username + "?start="
-								+ encryptDecryptData(StaticVariables.ENCODE.getValue(),
-										linkedUserTargets.get(0).getFromUser()));
-				// turn the flag to true of sending invitation
-				linkedUserTargets.get(0).setSentInvitation(true);
-				linkedUserTargetService.deleteLinkedUserTarget(linkedUserTargets.get(0));
-				linkedUserTargetService.saveLinkedUserTarget(linkedUserTargets.get(0));
+
+				try {
+					linkedUserTargetService.deleteLinkedUserTarget(linkedUserTargets.get(0));
+					// turn the flag to true of sending invitation
+					linkedUserTargets.get(0).setSentInvitation(true);
+					linkedUserTargets.get(0).setInvitationDate(new Date());
+					linkedUserTargetService.saveLinkedUserTarget(linkedUserTargets.get(0));
+					sendMessageToChannel(linkedUserTargets.get(0).getFromUser(), StaticVariables.NOTIFICATION_MESSAGE
+							.getValue()
+							+ StaticVariables.WEBSITE_URL.getValue()
+							+ encryptDecryptData(
+									StaticVariables.ENCODE.getValue(), linkedUserTargets.get(0).getFromUser())
+							+ StaticVariables.HOME_PAGE.getValue()
+							+ (linkedUserTargetService
+									.countInvitedLinkedUserTarget(linkedUserTargets.get(0).getFromUser()) * 10 + 10)
+							+ StaticVariables.GETTING_GOLT.getValue());
+				} catch (Exception e1) {
+					logger.info("error in save, duplicate target telegram", e1);
+				}
+
 			}
 
 			sendMessageToChannel(e.getId().toString(), StaticVariables.THANKS_MESSAGE.getValue());

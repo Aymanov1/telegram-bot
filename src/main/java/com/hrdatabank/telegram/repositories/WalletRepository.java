@@ -9,5 +9,5 @@ import com.hrdatabank.telegram.entities.Wallet;
 
 @Repository
 public interface WalletRepository extends JpaRepository<Wallet, Serializable> {
-	
+	Wallet findByIdUser(String idUser);
 }

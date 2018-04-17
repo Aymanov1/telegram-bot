@@ -1,13 +1,17 @@
 package com.hrdatabank.telegram.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="targetUser"))
 public class LinkedUserTarget implements Serializable {
 	/**
 	 * 
@@ -19,6 +23,7 @@ public class LinkedUserTarget implements Serializable {
 	private String targetUser;
 	private String fromUser;
 	private boolean sentInvitation = false;
+	private Date invitationDate;
 
 	public long getIdLinkedUserTarget() {
 		return idLinkedUserTarget;
@@ -48,10 +53,11 @@ public class LinkedUserTarget implements Serializable {
 		super();
 	}
 
-	public LinkedUserTarget(String targetUser, String fromUser) {
+	public LinkedUserTarget(String targetUser, String fromUser, Date date) {
 		super();
 		this.targetUser = targetUser;
 		this.fromUser = fromUser;
+		this.invitationDate = date;
 	}
 
 	public boolean isSentInvitation() {
@@ -60,6 +66,14 @@ public class LinkedUserTarget implements Serializable {
 
 	public void setSentInvitation(boolean sentInvitation) {
 		this.sentInvitation = sentInvitation;
+	}
+
+	public Date getInvitationDate() {
+		return invitationDate;
+	}
+
+	public void setInvitationDate(Date invitationDate) {
+		this.invitationDate = invitationDate;
 	}
 
 }
